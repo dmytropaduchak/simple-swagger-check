@@ -1,0 +1,22 @@
+name: Simple Swagger Check
+description: Detect OpenAPI/Swagger breaking changes between the PR base and head.
+author: Dmytro Paduchak
+branding:
+  icon: book-open
+  color: blue
+inputs:
+  github-token:
+    description: Token to read base branch files and post PR comments.
+    required: false
+    default: ${{ github.token }}
+  fail-on:
+    description: "none = report only; medium or high = fail when findings match."
+    required: false
+    default: none
+  spec-path:
+    description: Path to OpenAPI/Swagger file (auto-detect if empty).
+    required: false
+    default: ""
+runs:
+  using: node20
+  main: dist/index.js
